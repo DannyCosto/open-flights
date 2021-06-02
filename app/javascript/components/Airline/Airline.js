@@ -67,6 +67,12 @@ function Airline(props) {
       .catch((resp) => {});
   };
 
+  function setRating(score, e) {
+    e.preventDefault();
+
+    setReview({ ...review, score });
+  }
+
   return (
     <Wrapper>
       {loaded && (
@@ -82,6 +88,7 @@ function Airline(props) {
           </Column>
           <Column>
             <ReviewForm
+              setRating={setRating}
               handleChange={handleChange}
               handleSubmit={handleSubmit}
               attributes={airline.data.attributes}
